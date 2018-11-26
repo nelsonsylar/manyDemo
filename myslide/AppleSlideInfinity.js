@@ -2,7 +2,7 @@ var $imgWrapper=$('.imgWrapper')
 var $wholeImage=$imgWrapper.children('img')
 var $buttons=$('.btnWrapper>span')
 var current=0
-var n=1
+var n=0
 
 initial()
 $('.btnWrapper').on('click','span',function(e){
@@ -12,18 +12,22 @@ $('.btnWrapper').on('click','span',function(e){
     gotoSlide(index)
 })
 $(nextPic).on('click', function(){
-    gotoSlide(current-1)
-    buttonChange()
+    gotoSlide(current+1)
+    buttonChange(current)
+    
   })
   $(prePic).on('click', function(){
-    gotoSlide(current+1)
-    buttonChange()
+    gotoSlide(current-1)
+    
+    buttonChange(current)
+    
   })
 
 
 var timer = setInterval(function(){
     gotoSlide(current+1)
-    buttonChange()
+    buttonChange(current)
+    
     
 },1500)
 $('.wrapper').on('mouseenter',function(){
@@ -34,7 +38,8 @@ $('.wrapper').on('mouseenter',function(){
 $('.wrapper').on('mouseleave',function(){
     timer = setInterval(function(){
         gotoSlide(current+1)
-        buttonChange()
+        buttonChange(current)
+        
     },1500)
 })
 
@@ -71,13 +76,11 @@ function gotoSlide(index){
     current=index
     
 }
-function buttonChange(){
-    if(n==4){
-        n=0;
-    }
+function buttonChange(index){
+   
+    $('.btnWrapper>span').eq(index).addClass('active').siblings().removeClass('active')
     
-    $('.btnWrapper>span').eq(n).addClass('active').siblings().removeClass('active')
-    n++
+   
 }
 //将最后一页的图拷贝到第一页，第一页的图拷贝到最后一页
 function initial(){
