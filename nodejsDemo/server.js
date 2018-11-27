@@ -80,7 +80,26 @@ var server = http.createServer(function (request, response) {
       fs.writeFileSync('./db',amount)
     }else{response.write('pay failed')}
     response.end()
-  }else {
+  }else if(path==='/useAJAX'){
+    var string =fs.readFileSync('./useAJAX.html','utf8')
+    response.setHeader('Content-Type', 'text/html;charset=utf-8')
+    response.write(string)
+    response.end()  
+   }else if(path==='/usingAJAX'){
+    response.statusCode=200
+    response.setHeader('Content-Type','text/json;charset=utf-8')
+    response.setHeader('Access-Control-Allow-Origin','http://frank.com:8002/useAJAX')
+    response.write(`
+     {
+      "note":{
+      "name":"nelson",
+      "age":25,
+      "gender":"male"
+      }
+     } 
+    `)//注意JSON格式，最外一个大括号，string一定要加双引号
+    response.end()  //注意一定要end，否则response.readyStatus==3
+    }else {
     response.statusCode = 404
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
     response.write('找不到index.html')

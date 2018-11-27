@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用AJAX来实现提交请求</title>
+</head>
+<body>
+    <button id=btn>点我</button>
+    <script>
+        btn.onclick=()=>{
+            var request=new XMLHttpRequest()
+            request.open('get','./usingAJAX')
+            request.send()
+            request.onreadystatechange=()=>{
+                if(request.readyState==4){
+                    if(request.status>=200 && request.status<300){
+                        let string = request.responseText
+                        let obj = window.JSON.parse(string) 
+                        console.log(typeof obj)
+                        console.log(obj)
+                        console.log(obj.note.gender)
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
