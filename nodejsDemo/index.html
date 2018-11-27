@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>氪金体验器</title>
+</head>
+<body>
+    <!-- 用动态生成图片形式，但是有bug，第一次加载过后，之后就不能重复加载必须刷新才能加载 -->
+    <div><span id=money0>&&&money0&&&</span><div>
+    <button id =btn0>充钱</button>    
+    <hr>
+    <!-- 用ifame加部分页面动态刷新 -->
+    <div>还剩<span id=money1>&&&money&&&</span></div>
+    <form action="/pay6" method="post" target="result">
+        <button id=btn>小氪6元</button>
+    </form>
+    <iframe src="about:blank" frameborder="0" name='result' height=50></iframe>
+    <hr>
+    <!-- 用script -->
+    <div>还剩<span id=money2>&&&money2&&&</span></div>
+    <button id=btn2>中氪68元</button>
+    <hr>
+    <!-- 用JSONP -->
+    <div>还剩<span id=money3>&&&money3&&&</span></div>
+    <button id=btn3>大氪688元</button>
+    <script src="./main.js"></script>
+</body>
+</html>
