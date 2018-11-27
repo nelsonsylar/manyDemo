@@ -1,21 +1,8 @@
 # nodejs-test
+用nodejs实现if else路由来加深对JSONP的理解
+## 如何使用
+修改host  frank.com:8001 和 jack.com:8002 为127.0.0.1
+分别启动`node server.js 8002` `node server.js 8001`
+打开frank.com:8001，点击按钮，会向jack.com:8002发起请求，并返回回调函数实现跨域访问
 
 
-## 启动应用
-
-`node server.js 8888`
-
-或者
-
-`node server 8888`
-
-## 添加路由
-
-1. 编辑 server.js 文件，添加 if else
-2. 重新运行 node server.js 8888
-
-
-
-## 后台启动应用
-
-`node server.js 8888 >! log 2>&1 &`

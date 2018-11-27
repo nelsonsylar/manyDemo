@@ -1,4 +1,4 @@
-console.log(11)
+
 btn.onclick=function(){
     var left=money1.innerText
     left=left-6
@@ -10,9 +10,8 @@ btn.onclick=function(){
 }
 
 btn2.onclick=function(){
-    console.log(1)
     let script = document.createElement('script')
-    script.src='./pay68'
+    script.src='http://jack.com:8002/pay68'
     var left=money2.innerText-68
     document.body.appendChild(script)  //与image不同script必须要appendchild
 
@@ -31,7 +30,7 @@ btn2.onclick=function(){
 }
 btn0.onclick=function(){
     let image = document.createElement('img')
-    image.src='./charge'
+    image.src='http://jack.com:8002/charge'
     var left=money0.innerText-0+1000
     image.onload=function(){
         alert('充钱成功')
@@ -48,7 +47,7 @@ btn3.onclick=function(){
     window[functionName] = function(){  // 每次请求之前搞出一个随机的函数
         amount.innerText = amount.innerText - 0 - 688
     }
-    script.src = '/pay688?callback=' + functionName //这里的请求路径就为特殊路径
+    script.src = 'http://jack.com:8002/pay688?callback=' + functionName //这里的请求路径就为特殊路径
     document.body.appendChild(script)  //与image不同script必须要appendchild
     script.onload = function(e){ // 状态码是 200~299 则表示成功
         e.currentTarget.remove()
