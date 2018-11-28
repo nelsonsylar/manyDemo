@@ -17,9 +17,18 @@
         return nodes
         }
         window.$=window.jQuery
-        window.jQuery.ajax=function(url,method,body,success,fail){
+        window.jQuery.ajax=function({url,method,headers,body,success,fail}){//这里使用es6解构赋值
+            //相当于window.jQuery.ajax=function（obj）{
+            //let obj{}      
+            //let url=obj.url
+            //let method=obh.method .......
+            // }
             var request=new XMLHttpRequest()
             request.open(method,url)
+            for(key in headers){
+                var value=headers[key]
+                request.setRequestHeader(key,value)
+            }
             request.onreadystatechange=function(){
                 if(request.readyState===4){
                     if(request.status>200&&request.status<300||request.status===304){
@@ -33,7 +42,17 @@
         }
         //使用轮子
         btn.onclick=function(){
-            $.ajax('/usingAJAX','post','hi',successFn,failFn)
+            $.ajax({
+                url:'/usingAJAX',
+                method:'post',
+                body:'hi',
+                headers:{
+                    'content-type':'application/x-www-form-urlencoded',
+                    'nelson': '25'
+                },
+                success:successFn,
+                fail:failFn
+            })
         }
         function successFn(e){
             console.log(e)
