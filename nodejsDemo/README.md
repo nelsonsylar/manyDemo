@@ -10,3 +10,4 @@
 ## 增加用js封装简单的jQuery.ajax的api
 - 实现jQuery.ajax(url,method,body,success, fail)
 - 将传参修改为对象的形式
+- 升级jQuery.ajax 满足 Promise 规则

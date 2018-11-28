@@ -11,34 +11,36 @@
     <script>
         //造轮子
         window.jQuery = function(nodeOrSelector){  //在创建window.jQuery.ajax=xxx时
-        let nodes = {}                             //必须要先定义window.jQuery
-        nodes.addClass = function(){}
-        nodes.html = function(){}
-        return nodes
+            let nodes = {}                         //必须要先定义window.jQuery
+            nodes.addClass = function(){}
+            nodes.html = function(){}
+            return nodes
         }
         window.$=window.jQuery
-        window.jQuery.ajax=function({url,method,headers,body,success,fail}){//这里使用es6解构赋值
+        window.jQuery.ajax=function({url,method,headers,body}){//这里使用es6解构赋值
             //相当于window.jQuery.ajax=function（obj）{
             //let obj{}      
             //let url=obj.url
             //let method=obh.method .......
             // }
-            var request=new XMLHttpRequest()
-            request.open(method,url)
-            for(key in headers){
-                var value=headers[key]
-                request.setRequestHeader(key,value)
-            }
-            request.onreadystatechange=function(){
-                if(request.readyState===4){
-                    if(request.status>200&&request.status<300||request.status===304){
-                            success.call(undefined,request.responseText)
-                    }
-                }else{
-                        fail.call(undefined,request.response)
+            return new Promise(function(resolve,reject){
+                let request=new XMLHttpRequest()
+                request.open(method,url)
+                for(key in headers){
+                    let value=headers[key]
+                    request.setRequestHeader(key,value)
                 }
-            }
-            request.send(body)
+                request.onreadystatechange=function(){
+                    if(request.readyState===4){
+                        if(request.status>=200 && request.status<300){
+                            resolve.call(undefined, request.responseText)
+                        }
+                    }else if(request.status===400){
+                        reject.call(undefined,request)
+                    }
+                }
+                request.send(body)
+            })
         }
         //使用轮子
         btn.onclick=function(){
@@ -49,18 +51,12 @@
                 headers:{
                     'content-type':'application/x-www-form-urlencoded',
                     'nelson': '25'
-                },
-                success:successFn,
-                fail:failFn
+                }
             })
-        }
-        function successFn(e){
-            console.log(e)
-        }
-        function failFn(e){
-            console.log(e)
-        }
-        
+            .then( 
+                (x)=>{console.log(x)},
+                (y)=>{console.log(y)})
+        }   
     </script>
 </body>
 </html>
