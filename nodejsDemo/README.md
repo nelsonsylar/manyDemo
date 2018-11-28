@@ -5,5 +5,7 @@
 2. 分别启动`node server.js 8002` `node server.js 8001`
 3. 打开frank.com:8001，点击按钮，会向jack.com:8002发起请求，并返回回调函数实现跨域访问
 
-## 增加 使用ajax发送请求
+## 增加用ajax发送请求
 访问  http://localhost:8002/useAJAX
+## 增加用js封装简单的jQuery.ajax的api
+实现jQuery.ajax(url,method,body,success, fail)

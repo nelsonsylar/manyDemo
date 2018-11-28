@@ -36,6 +36,11 @@ var server = http.createServer(function (request, response) {
     response.setHeader('Content-Type', 'text/css')
     response.write(string)
     response.end()
+  }else if(path==='/makeAJAXapi'){
+    var string =fs.readFileSync('./makeAJAXapi.html','utf8')  
+    response.setHeader('Content-Type', 'text/html;charset=utf-8')
+    response.write(string)
+    response.end()
   }else if(path==='/main.js'){
     var string =fs.readFileSync('./main.js','utf8')  
     response.setHeader('Content-Type', 'application/javascript')
