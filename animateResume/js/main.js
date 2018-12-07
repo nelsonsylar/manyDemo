@@ -82,9 +82,9 @@ var myPaperContent=`
     - 手机 15708496745
 `
 var aboveAll=`
-/* 接下来用一个优秀的库 marked.js
+/*变
 
-* 把 Markdown 变成 HTML
+* 看,我用了一个marked.min.js把 Markdown 变成 HTML
 
 * 这就是我的会动的简历
 
