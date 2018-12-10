@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style id="styleTag"></style>
+    <title>画一只可达鸭</title>
+</head>
+<body>
+    <audio hidden loop autoplay="autoplay">
+        <source src="./NyanCat.mp3" type="audio/mpeg" />  
+    </audio>
+        <div class="button">
+            <button data-speed='slow'>慢速</button>
+            <button class='active' data-speed='fast'>快速</button>
+            <button data-speed='jobDone'>结束</button>
+        </div>
+        <div class="container">
+            <div class="leftFoot"></div>
+            <div class="rightFoot"></div>
+            <div class="body">
+                <div class="leftHand"></div>
+                <div class="rightHand"></div>
+            </div>
+            <div class="head">
+                <div class="hair"></div>
+                <div class="leftEye"></div>
+                <div class="rightEye"></div>
+            </div>
+            <div class="mouth"></div>
+            <div class="mouthTriangle"></div>
+            <div class="mouthCenter"></div>
+            <div class="mouthUpLeft"></div>
+            <div class="mouthUpRight"></div>
+        </div>
+        <pre class="codeWrapper"></pre>
+        <script src="./main.js"></script>
+</body>
+</html>
